@@ -1,0 +1,30 @@
+---
+title: "p8105_hw1_jt3174"
+author: "Jingyi"
+date: "9/16/2019"
+output: html_document
+---
+
+# Problem 1
+
+#### Create a data frame comprised of:
+##### * a random sample size of 8 from a standard Normal distribution
+##### * a logical vector indicating whether elements of the sample are greater than 0
+##### * a character vector of length 8
+##### * a factor vector of length 8, with 3 different factor “levels”
+
+```{r part_1_of_Question_1}
+library(tidyverse)
+set.seed(1)
+# Question: Is this set.seed() here necessary?
+# Question: Can I just get any character/factor vector? Or something else is required?
+Part1Question1 = tibble(
+  x = rnorm(8),
+  y = x > 0,
+  z = c("rnorm1", "rnorm2", "rnorm3", "rnorm4", "rnorm5", "rnorm6", "rnorm7", "rnorm8"),
+  a = factor(c("level1", "level2","level3", "level1", "level2", "level3", "level1", "level2")))
+
+# Is this correct and am I on the right track?
+```
+
+
