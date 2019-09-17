@@ -65,15 +65,64 @@ Yes, this does explain what happened when we are trying for mean function for th
 ##### * convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result
 
 
-```{r results = HIDE}
+```{r}
+# Here I have a error with {r results = hide}:
+ ## Error in eval(x, envir = envir): object "hide" not found Calls: <Anonymous> ... process_group.block -> call_block -> eval_lang -> eval -> eval Execution halted
 
 numeric_y_1 = numeric_y * pull(Part1Question1, x)
     # Question: What do the question mean by random sample by the result?
 factor_y = as.factor(pull(Part1Question1, y))
+####### ATTENTION #########
 factor_y_1 = factor_y * pull(Part1Question1, x)
+###########################
 # Question: Here it said that * is not meaningful for factors, what do I do about this? Or do I leave this as it is?
 numeric_y_2 = as.numeric(factor_y_1)
 numeric_y_3 = numeric_y_2 * pull(Part1Question1, x)
 
+```
+
+# Problem 2
+
+#### Create a data frame comprised of:
+##### * x: a random sample of size 500 from a standard Normal distribution
+##### * y: a random sample of size 500 from a standard Normal distribution
+##### * A logical vector indicating whether x + y > 1
+##### * A numeric vector created by coercing the above logical vector
+##### * A factor vector created by coercing the above logical vector
+
+```{r}
+
+set.seed(10)
+# Question: Do I need another set.seed()?
+# If I have a set.seed() here will it make x and y the same outputs?
+
+Question2 = tibble(
+  x = rnorm(500),
+  y = rnorm(500),
+  z = x + y > 1,
+  a = as.numeric(z),
+  b = as.factor(z))
+
+# Dataframe created.
+
+```
+
+* The size of the dataset are `r nrow(pull(Question2))` rows and `r ncol(pull(Question2))` columns.
+
+``` {r}
+# Question: Am I using this wrongly so this does not came out the way I wanted? How do I do this?
+```
+
+* The mean of x is `r mean(pull(Question2, x))`.
+
+* The medium of x is `r median(pull(Question2, x))`.
+
+* The standard deviation of x is `r sd(pull(Question2, x))`.
+
+* The proportion of cases for which x + y > 1 is `r `
+
+```{r}
+# Question: How do I find proportion?
+# Try for scatterplot tomorrow.
 ```
 

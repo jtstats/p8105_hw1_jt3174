@@ -434,6 +434,77 @@ numeric_z = as.numeric(pull(Part1Question1, z))</code></pre>
 <p>For the as.numeric part: All y, z and a values are converted into numeric vectors and it seemed like y are fine with this conversion; however, there are NA values introduced in the dataset forcefully. Yes, this does explain what happened when we are trying for mean function for the last part. R can’t execuate mean function properly unless we have numerical values in the dataset.</p>
 </div>
 </div>
+<div id="now-part-2-of-question-1" class="section level4">
+<h4>Now Part 2 of Question 1:</h4>
+<div id="convert-the-logical-vector-to-numeric-and-multiply-the-random-sample-by-the-result" class="section level5">
+<h5>* convert the logical vector to numeric, and multiply the random sample by the result</h5>
+</div>
+<div id="convert-the-logical-vector-to-a-factor-and-multiply-the-random-sample-by-the-result" class="section level5">
+<h5>* convert the logical vector to a factor, and multiply the random sample by the result</h5>
+</div>
+<div id="convert-the-logical-vector-to-a-factor-and-then-convert-the-result-to-numeric-and-multiply-the-random-sample-by-the-result" class="section level5">
+<h5>* convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result</h5>
+<pre class="r"><code># Here I have a error with {r results = hide}:
+ ## Error in eval(x, envir = envir): object &quot;hide&quot; not found Calls: &lt;Anonymous&gt; ... process_group.block -&gt; call_block -&gt; eval_lang -&gt; eval -&gt; eval Execution halted
+
+numeric_y_1 = numeric_y * pull(Part1Question1, x)
+    # Question: What do the question mean by random sample by the result?
+factor_y = as.factor(pull(Part1Question1, y))
+####### ATTENTION #########
+factor_y_1 = factor_y * pull(Part1Question1, x)</code></pre>
+<pre><code>## Warning in Ops.factor(factor_y, pull(Part1Question1, x)): &#39;*&#39; not
+## meaningful for factors</code></pre>
+<pre class="r"><code>###########################
+# Question: Here it said that * is not meaningful for factors, what do I do about this? Or do I leave this as it is?
+numeric_y_2 = as.numeric(factor_y_1)
+numeric_y_3 = numeric_y_2 * pull(Part1Question1, x)</code></pre>
+</div>
+</div>
+</div>
+<div id="problem-2" class="section level1">
+<h1>Problem 2</h1>
+<div id="create-a-data-frame-comprised-of-1" class="section level4">
+<h4>Create a data frame comprised of:</h4>
+<div id="x-a-random-sample-of-size-500-from-a-standard-normal-distribution" class="section level5">
+<h5>* x: a random sample of size 500 from a standard Normal distribution</h5>
+</div>
+<div id="y-a-random-sample-of-size-500-from-a-standard-normal-distribution" class="section level5">
+<h5>* y: a random sample of size 500 from a standard Normal distribution</h5>
+</div>
+<div id="a-logical-vector-indicating-whether-x-y-1" class="section level5">
+<h5>* A logical vector indicating whether x + y &gt; 1</h5>
+</div>
+<div id="a-numeric-vector-created-by-coercing-the-above-logical-vector" class="section level5">
+<h5>* A numeric vector created by coercing the above logical vector</h5>
+</div>
+<div id="a-factor-vector-created-by-coercing-the-above-logical-vector" class="section level5">
+<h5>* A factor vector created by coercing the above logical vector</h5>
+<pre class="r"><code>set.seed(10)
+# Question: Do I need another set.seed()?
+# If I have a set.seed() here will it make x and y the same outputs?
+
+Question2 = tibble(
+  x = rnorm(500),
+  y = rnorm(500),
+  z = x + y &gt; 1,
+  a = as.numeric(z),
+  b = as.factor(z))
+
+# Dataframe created.</code></pre>
+<ul>
+<li>The size of the dataset are rows and columns.</li>
+</ul>
+<pre class="r"><code># Question: Am I using this wrongly so this does not came out the way I wanted? How do I do this?</code></pre>
+<ul>
+<li><p>The mean of x is -0.0108732.</p></li>
+<li><p>The medium of x is -0.0212291.</p></li>
+<li><p>The standard deviation of x is 1.0164129.</p></li>
+<li><p>The proportion of cases for which x + y &gt; 1 is <code>r</code></p></li>
+</ul>
+<pre class="r"><code># Question: How do I find proportion?
+# Try for scatterplot tomorrow.</code></pre>
+</div>
+</div>
 </div>
 
 
