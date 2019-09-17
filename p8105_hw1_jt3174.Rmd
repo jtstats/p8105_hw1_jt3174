@@ -24,7 +24,38 @@ Part1Question1 = tibble(
   z = c("rnorm1", "rnorm2", "rnorm3", "rnorm4", "rnorm5", "rnorm6", "rnorm7", "rnorm8"),
   a = factor(c("level1", "level2","level3", "level1", "level2", "level3", "level1", "level2")))
 
-# Is this correct and am I on the right track?
+# Question: Is this correct and am I on the right track?
+
+# Now take the mean of each vector in the data frame.
+
+mean_x = mean(pull(Part1Question1, x))
+mean_y = mean(pull(Part1Question1, y))
+mean_z = mean(pull(Part1Question1, z))
+mean_a = mean(pull(Part1Question1, a))
+
+# Question: why the logical vector returned a mean value? It seems like R took FALSE as 0 and then TRUE as 1.
+# Question: If this is OK to say yes, there is a value returned in the assignment?
+
+# Now use the as.numeric function.
+# Show the chuck but not the output.
+
+# Question: Is this for all of above or is this only for this as.numeric part?
+# If this is for all code chuck in Part 1, then change the beginning of the code chuck into:
+ # {r results = HIDE part_1_of_Question_1}
+ # Question: How do I keep both the name of the code chuck and the command together?
+ # Question: What if I want to only hide the result of as.numeric part?
+
+numeric_y = as.numeric(pull(Part1Question1, y)) 
+numeric_z = as.numeric(pull(Part1Question1, z))
+numeric_a = as.numeric(pull(Part1Question1, a))
+
 ```
 
+For the mean value finding part:
+a and y returned mean values.
+z and a did not return a mean value since z and a are not numeric.
+
+For the as.numeric part:
+All y, z and a values are converted into numeric vectors and it seemed like y are fine with this conversion; however, there are NA values introduced in the dataset forcefully.
+Yes, this does explain what happened when we are trying for mean function for the last part. R can't execuate mean function properly unless we have numerical values in the dataset.
 
