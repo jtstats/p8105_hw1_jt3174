@@ -119,10 +119,26 @@ Question2 = tibble(
 
 * The standard deviation of x is `r sd(pull(Question2, x))`.
 
-* The proportion of cases for which x + y > 1 is `r `
+* The proportion of cases for which x + y > 1 is `r prop.table(table(Question2$z)) `
 
 ```{r}
 # Question: How do I find proportion?
-# Try for scatterplot tomorrow.
+
+# When I used prop.table(table(pull(Question2, z)))
+# Here the error message is :
+  ### Error in table(Question2, z): object 'z' not found Calls: <Anonymous> ... withVisible -> eval -> eval -> prop.table -> pull -> table Execution halted
+# However, this updated version does run, but gave me two numbers in return but this should be one only.
+# WHY????
+
+# Scatterplot:
+## Question: Does this mean y vs x? OR x vs y?
+## Question: Can I directly use x and y in this ggplot function?
+ggplot(Question2, aes(x = x, y = y)) + geom_point()
+
+#####
+# What is "color points using the logical variable (adding color = ... inside of aes in your ggplot code should help). Make a second and third scatterplot that color points using the numeric and factor variables, respectively, and comment on the color scales."
+# What is "Export your first scatterplot to your project directory using ggsave."
+##### 
+
 ```
 
