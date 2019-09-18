@@ -14,24 +14,28 @@ output: html_document
 ##### * a factor vector of length 8, with 3 different factor “levels”
 
 ```{r Question_1_Part_1}
+
+# load the necessary 
 library(tidyverse)
 set.seed(1)
+
 # Question: Is this set.seed() here necessary?
 # Question: Can I just get any character/factor vector? Or something else is required?
 Part1Question1 = tibble(
-  x = rnorm(8),
-  y = x > 0,
-  z = c("rnorm1", "rnorm2", "rnorm3", "rnorm4", "rnorm5", "rnorm6", "rnorm7", "rnorm8"),
-  a = factor(c("level1", "level2","level3", "level1", "level2", "level3", "level1", "level2")))
+  ramdomsamplex = rnorm(8),
+  logicaly = ramdomsamplex > 0,
+  characterz = c("rnorm1", "rnorm2", "rnorm3", "rnorm4", "rnorm5", "rnorm6", "rnorm7", "rnorm8"),
+  factora = factor(c("level1", "level2","level3", "level1", "level2", "level3", "level1", "level2")))
 
 # Question: Is this correct and am I on the right track?
+# Question Solved.
 
 # Now take the mean of each vector in the data frame.
 
-mean_x = mean(pull(Part1Question1, x))
-mean_y = mean(pull(Part1Question1, y))
-mean_z = mean(pull(Part1Question1, z))
-mean_a = mean(pull(Part1Question1, a))
+mean_ramdomsamplex = mean(pull(Part1Question1, ramdomsamplex))
+mean_logicaly = mean(pull(Part1Question1, logicaly))
+mean_characterz = mean(pull(Part1Question1, characterz))
+mean_factora = mean(pull(Part1Question1, factora))
 
 ```
 
@@ -47,19 +51,19 @@ mean_a = mean(pull(Part1Question1, a))
 ########################
 # separate this part to hide the result but show the code chuck.
 
-numeric_y = as.numeric(pull(Part1Question1, y)) 
-numeric_z = as.numeric(pull(Part1Question1, z))
-numeric_a = as.numeric(pull(Part1Question1, a))
+numeric_logicaly = as.numeric(pull(Part1Question1, logicaly)) 
+numeric_characterz = as.numeric(pull(Part1Question1, characterz))
+numeric_factora = as.numeric(pull(Part1Question1, factora))
 
 ```
 
 For the mean value finding part:
-a and y returned mean values.
+factora and logicaly returned mean values.
 For this part, the logical vector returned a mean value, it seems like R took the logical vector False as 0 and then TRUE as 1. And my calculation proves it. 
-z and a did not return a mean value since z and a are not numeric.
+characterz and factora did not return a mean value since characterz and factora are not numeric.
 
 For the as.numeric part:
-All y, z and a values are converted into numeric vectors and it seemed like y and a are fine with this conversion; however, there are NA values introduced in the dataset forcefully. z failed to have true values, but NA's. If we try further with its mean, we will also get NA as output. This is because the character vector failed to convert into any numeric values. However, a converted and will also produce a mean if we try further. This is because R assigned numeric values such as 1, 2, 3's to different levels according to the order of it; hence, we can also get a mean after this forcefully transformation.
+All logicaly, characterz and factora values are converted into numeric vectors and it seemed like logicaly and factora are fine with this conversion; however, there are NA values introduced in the dataset forcefully. characterz failed to have true values, but NA's. If we try further with its mean, we will also get NA as output. This is because the character vector failed to convert into any numeric values. However, factora converted and will also produce a mean if we try further. This is because R assigned numeric values such as 1, 2, 3's to different levels according to the order of it; hence, we can also get a mean after this forcefully transformation.
 Yes, this does explain what happened when we are trying for mean function for the last part. R can't execuate mean function properly unless we have numerical values in the dataset.
 
 #### Now Part 2 of Question 1:
@@ -71,20 +75,20 @@ Yes, this does explain what happened when we are trying for mean function for th
 ```{r}
 
 
-numeric_y_1 = numeric_y * pull(Part1Question1, x)
+numeric_logicaly_1 = numeric_logicaly * pull(Part1Question1, ramdomsamplex)
     # Question: What do the question mean by random sample by the result?
-factor_y = as.factor(pull(Part1Question1, y))
+factor_logicaly = as.factor(pull(Part1Question1, logicaly))
 
 ####### ATTENTION #########
-factor_y_1 = factor_y * pull(Part1Question1, x)
+factor_logicaly_1 = factor_logicaly * pull(Part1Question1, ramdomsamplex)
 ###########################
 
-numeric_y_2 = as.numeric(factor_y_1)
-numeric_y_3 = numeric_y_2 * pull(Part1Question1, x)
+numeric_logicaly_2 = as.numeric(factor_logicaly_1)
+numeric_logicaly_3 = numeric_logicaly_2 * pull(Part1Question1, ramdomsamplex)
 
 ```
 
-For the factor_y part, it did not return a value, but the massage said that * is not operatable. What happened here is that the factor_y is a factor vector and this vector cannot be multiple with numeric vectors. Therefore, R cannot return any numeric values for this part of code. 
+For the factor_logicaly part, it did not return a value, but the massage said that * is not operatable. What happened here is that the factor_logicaly is a factor vector and this vector cannot be multiple with numeric vectors. Therefore, R cannot return any numeric values for this part of code. 
 
 # Problem 2
 
@@ -97,53 +101,54 @@ For the factor_y part, it did not return a value, but the massage said that * is
 
 ```{r}
 
+# ensure reprpductivity
 set.seed(10)
 # Question: Do I need another set.seed()?
 # If I have a set.seed() here will it make x and y the same outputs?
 
 Question2 = tibble(
-  x = rnorm(500),
-  y = rnorm(500),
-  z = x + y > 1,
-  a = as.numeric(z),
-  b = as.factor(z))
+  normsampx = rnorm(500),
+  normsampy = rnorm(500),
+  logicalz = normsampx + normsampy > 1,
+  numerica = as.numeric(logicalz),
+  factorb = as.factor(logicalz))
 
 # Dataframe created.
 
-zcount = pull(Question2, z)
+zcount = pull(Question2, logicalz)
 
 ```
 
 * The size of the dataset are `r nrow(Question2)` rows and `r ncol(Question2)` columns.
 
-* The mean of x is `r mean(pull(Question2, x))`.
+* The mean of normsampx is `r mean(pull(Question2, normsampx))`.
 
-* The medium of x is `r median(pull(Question2, x))`.
+* The medium of normsampx is `r median(pull(Question2, normsampx))`.
 
-* The standard deviation of x is `r sd(pull(Question2, x))`.
+* The standard deviation of normsampx is `r sd(pull(Question2, normsampx))`.
 
-* The proportion of cases for which x + y > 1 is `r sum(zcount)/length(pull(Question2, x))`
+* The proportion of cases for which normsampx + normsampy > 1 is `r sum(zcount)/length(pull(Question2, normsampx))`
 
 ```{r}
 # Question: How do I find proportion?
 # Question solved. Refer to the code above.
 
-# When I used prop.table(table(pull(Question2, z)))
+# When I used prop.table(table(pull(Question2, logicalz)))
 # Here the error message is :
-  ### Error in table(Question2, z): object 'z' not found Calls: <Anonymous> ... withVisible -> eval -> eval -> prop.table -> pull -> table Execution halted
+  ### Error in table(Question2, logicalz): object 'logicalz' not found Calls: <Anonymous> ... withVisible -> eval -> eval -> prop.table -> pull -> table Execution halted
 # However, this updated version does run, but gave me two numbers in return but this should be one only.
 # WHY????
 # Still wonder about prop.table()
 
 # Scatterplot:
-## Question: Does this mean y vs x? OR x vs y?
+## Question: Does this mean normsampy vs normsampx? OR normsampx vs normsampy?
 ## Question Solved. 
-## Question: Can I directly use x and y in this ggplot function?
-ggplot(Question2, aes(x = x, y = y, color = z)) + geom_point()
+## Question: Can I directly use normsampx and normsampy in this ggplot function?
+ggplot(Question2, aes(x = normsampx, y = normsampy, color = logicalz)) + geom_point()
 ggsave("scatterplot1.jpg")
 
-ggplot(Question2, aes(x = x, y = y, color = a)) + geom_point()
-ggplot(Question2, aes(x = x, y = y, color = b)) + geom_point()
+ggplot(Question2, aes(x = normsampx, y = normsampy, color = numerica)) + geom_point()
+ggplot(Question2, aes(x = normsampx, y = normsampy, color = factorb)) + geom_point()
 
 #####
 # What is "color points using the logical variable (adding color = ... inside of aes in your ggplot code should help). Make a second and third scatterplot that color points using the numeric and factor variables, respectively, and comment on the color scales."
