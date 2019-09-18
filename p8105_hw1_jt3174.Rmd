@@ -174,7 +174,7 @@ zcount = pull(Question2, logicalz)
 
 # Use ggplot to draw a scatterplot with y vs x, and colored by the logical vector
 
-ggplot(Question2, aes(x = x, y = y, color = logicalz)) + geom_point()
+ggplot(Question2, aes(x = x, y = y, color = logicalz)) + geom_point() + labs(title = "scatterplot of y vs x by logical vector logicalz")
 
 # use ggsave to save the scatterplot created above
 
@@ -182,11 +182,11 @@ ggsave("scatterplot1.jpg")
 
 # Use ggplot to draw a scatterplot with y vs x, and colored by the numeric vector
 
-ggplot(Question2, aes(x = x, y = y, color = numerica)) + geom_point()
+ggplot(Question2, aes(x = x, y = y, color = numerica)) + geom_point() + labs(title = "scatterplot of y vs x by numeric vector numerica")
 
 # Use ggplot to draw a scatterplot with y vs x, and colored by the factor vector
 
-ggplot(Question2, aes(x = x, y = y, color = factorb)) + geom_point()
+ggplot(Question2, aes(x = x, y = y, color = factorb)) + geom_point() + labs(title = "scatterplot of y vs x by factor vector factorb")
 
 #####
 # What is "color points using the logical variable (adding color = ... inside of aes in your ggplot code should help). Make a second and third scatterplot that color points using the numeric and factor variables, respectively, and comment on the color scales."
