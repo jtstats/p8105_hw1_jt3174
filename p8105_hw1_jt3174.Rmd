@@ -59,7 +59,7 @@ For this part, the logical vector returned a mean value, it seems like R took th
 z and a did not return a mean value since z and a are not numeric.
 
 For the as.numeric part:
-All y, z and a values are converted into numeric vectors and it seemed like y are fine with this conversion; however, there are NA values introduced in the dataset forcefully.
+All y, z and a values are converted into numeric vectors and it seemed like y and a are fine with this conversion; however, there are NA values introduced in the dataset forcefully. z failed to have true values, but NA's. If we try further with its mean, we will also get NA as output. This is because the character vector failed to convert into any numeric values. However, a converted and will also produce a mean if we try further. This is because R assigned numeric values such as 1, 2, 3's to different levels according to the order of it; hence, we can also get a mean after this forcefully transformation.
 Yes, this does explain what happened when we are trying for mean function for the last part. R can't execuate mean function properly unless we have numerical values in the dataset.
 
 #### Now Part 2 of Question 1:
@@ -110,6 +110,8 @@ Question2 = tibble(
 
 # Dataframe created.
 
+zcount = pull(Question2, z)
+
 ```
 
 * The size of the dataset are `r nrow(Question2)` rows and `r ncol(Question2)` columns.
@@ -120,25 +122,33 @@ Question2 = tibble(
 
 * The standard deviation of x is `r sd(pull(Question2, x))`.
 
-* The proportion of cases for which x + y > 1 is `r prop.table(table(Question2$z)) `
+* The proportion of cases for which x + y > 1 is `r sum(zcount)/length(pull(Question2, x))`
 
 ```{r}
 # Question: How do I find proportion?
+# Question solved. Refer to the code above.
 
 # When I used prop.table(table(pull(Question2, z)))
 # Here the error message is :
   ### Error in table(Question2, z): object 'z' not found Calls: <Anonymous> ... withVisible -> eval -> eval -> prop.table -> pull -> table Execution halted
 # However, this updated version does run, but gave me two numbers in return but this should be one only.
 # WHY????
+# Still wonder about prop.table()
 
 # Scatterplot:
 ## Question: Does this mean y vs x? OR x vs y?
+## Question Solved. 
 ## Question: Can I directly use x and y in this ggplot function?
-ggplot(Question2, aes(x = x, y = y)) + geom_point()
+ggplot(Question2, aes(x = x, y = y, color = z)) + geom_point()
+ggsave("scatterplot1.jpg")
+
+ggplot(Question2, aes(x = x, y = y, color = a)) + geom_point()
+ggplot(Question2, aes(x = x, y = y, color = b)) + geom_point()
 
 #####
 # What is "color points using the logical variable (adding color = ... inside of aes in your ggplot code should help). Make a second and third scatterplot that color points using the numeric and factor variables, respectively, and comment on the color scales."
 # What is "Export your first scatterplot to your project directory using ggsave."
+## Question Solved.
 ##### 
 
 ```
