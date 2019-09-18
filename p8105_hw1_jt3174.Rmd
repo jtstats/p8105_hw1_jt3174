@@ -13,7 +13,7 @@ output: html_document
 ##### * a character vector of length 8
 ##### * a factor vector of length 8, with 3 different factor “levels”
 
-```{r part_1_of_Question_1}
+```{r Question_1_Part_1}
 library(tidyverse)
 set.seed(1)
 # Question: Is this set.seed() here necessary?
@@ -33,17 +33,19 @@ mean_y = mean(pull(Part1Question1, y))
 mean_z = mean(pull(Part1Question1, z))
 mean_a = mean(pull(Part1Question1, a))
 
-# Question: why the logical vector returned a mean value? It seems like R took FALSE as 0 and then TRUE as 1.
-# Question: If this is OK to say yes, there is a value returned in the assignment?
+```
+
+
+
+```{r part1_2, results = "hide"}
 
 # Now use the as.numeric function.
 # Show the chuck but not the output.
 
-# Question: Is this for all of above or is this only for this as.numeric part?
-# If this is for all code chuck in Part 1, then change the beginning of the code chuck into:
- # {r results = HIDE part_1_of_Question_1}
  # Question: How do I keep both the name of the code chuck and the command together?
  # Question: What if I want to only hide the result of as.numeric part?
+########################
+# separate this part to hide the result but show the code chuck.
 
 numeric_y = as.numeric(pull(Part1Question1, y)) 
 numeric_z = as.numeric(pull(Part1Question1, z))
@@ -53,6 +55,7 @@ numeric_a = as.numeric(pull(Part1Question1, a))
 
 For the mean value finding part:
 a and y returned mean values.
+For this part, the logical vector returned a mean value, it seems like R took the logical vector False as 0 and then TRUE as 1. And my calculation proves it. 
 z and a did not return a mean value since z and a are not numeric.
 
 For the as.numeric part:
@@ -66,20 +69,22 @@ Yes, this does explain what happened when we are trying for mean function for th
 
 
 ```{r}
-# Here I have a error with {r results = hide}:
- ## Error in eval(x, envir = envir): object "hide" not found Calls: <Anonymous> ... process_group.block -> call_block -> eval_lang -> eval -> eval Execution halted
+
 
 numeric_y_1 = numeric_y * pull(Part1Question1, x)
     # Question: What do the question mean by random sample by the result?
 factor_y = as.factor(pull(Part1Question1, y))
+
 ####### ATTENTION #########
 factor_y_1 = factor_y * pull(Part1Question1, x)
 ###########################
-# Question: Here it said that * is not meaningful for factors, what do I do about this? Or do I leave this as it is?
+
 numeric_y_2 = as.numeric(factor_y_1)
 numeric_y_3 = numeric_y_2 * pull(Part1Question1, x)
 
 ```
+
+For the factor_y part, it did not return a value, but the massage said that * is not operatable. What happened here is that the factor_y is a factor vector and this vector cannot be multiple with numeric vectors. Therefore, R cannot return any numeric values for this part of code. 
 
 # Problem 2
 
@@ -107,11 +112,7 @@ Question2 = tibble(
 
 ```
 
-* The size of the dataset are `r nrow(pull(Question2))` rows and `r ncol(pull(Question2))` columns.
-
-``` {r}
-# Question: Am I using this wrongly so this does not came out the way I wanted? How do I do this?
-```
+* The size of the dataset are `r nrow(Question2)` rows and `r ncol(Question2)` columns.
 
 * The mean of x is `r mean(pull(Question2, x))`.
 
