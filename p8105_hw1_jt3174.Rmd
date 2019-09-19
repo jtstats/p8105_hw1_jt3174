@@ -2,7 +2,7 @@
 title: "p8105_hw1_jt3174"
 author: "Jingyi"
 date: "9/16/2019"
-output: html_document
+output: github_document
 ---
 
 # Problem 1
